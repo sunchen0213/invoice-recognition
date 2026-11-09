@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments and application state
+.venv/
+.env
+config.ini
+
+# Build artefacts
+build/
+dist/
+*.spec.bak
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/

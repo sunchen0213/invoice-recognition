@@ -1,0 +1,33 @@
+[project]
+name = "invoice-recognition"
+version = "1.0.0"
+description = "Desktop tool for batch VAT invoice OCR and Excel export"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "keyring>=25.6.0",
+    "openpyxl>=3.1.5",
+    "platformdirs>=4.3.6",
+    "requests>=2.32.3",
+]
+
+[project.scripts]
+invoice-recognition = "invoice_recognition.gui:run"
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.11.1",
+    "pytest>=8.3.4",
+    "ruff>=0.8.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
