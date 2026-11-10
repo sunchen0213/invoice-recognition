@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 
+from invoice_recognition.config import load_env_credentials
 from invoice_recognition.service import (
     HEADERS,
     OcrApiError,
@@ -8,6 +9,14 @@ from invoice_recognition.service import (
     parse_invoice,
     write_excel,
 )
+
+
+def test_load_env_credentials_reads_dotenv_file(tmp_path, monkeypatch) -> None:
+    monkeypatch.delenv("BAIDU_ACCESS_KEY", raising=False)
+    monkeypatch.delenv("BAIDU_SECRET_KEY", raising=False)
+    dotenv = tmp_path / ".env"
+    dotenv.write_text("BAIDU_ACCESS_KEY=test_ak\nBAIDU_SECRET_KEY=test_sk\n", encoding="utf-8")
+    assert load_env_credentials(dotenv) == ("test_ak", "test_sk")
 
 
 def test_api_error_is_detected_without_success_field() -> None:

@@ -9,8 +9,10 @@ htmlcov/
 # Local environments and application state
 .venv/
 .env
+.env.*
+!.env.example
 config.ini
-
+*test_key*
 # Build artefacts
 build/
 dist/
